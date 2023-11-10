@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Title, MovieList } from '../../../utils/styled.components'
-import Loading from '../../../common/Loading'
-import { useMovies, useMoviesSearch } from '../../../hooks/useMovies'
+import { Title, MovieList } from '../../utils/styled.components'
+import Loading from '../../common/Loading'
+import { useMovies, useMoviesSearch } from '../../hooks/useMovies'
 import { useNavigate } from "react-router-dom";
-import { Movie } from './Movie';
+import { Movie, MovieProps } from './Movie';
 import MovieSearchForm from './MovieSearchForm';
 
 const Movies = () : JSX.Element => {
@@ -31,18 +31,18 @@ const Movies = () : JSX.Element => {
   }
 
   if (isLoading || isLoadingSearch) {
-    return <Loading />
+    return <Loading path='src/assets/canal+.svg'/>
   }
 
   if (isError) {
     return <p> Something went wrong...</p>
   }
 
-  const filtredMovieList =  moviesFound.results.map(movie => (
+  const filtredMovieList =  moviesFound.results.map((movie : MovieProps) => (
     <Movie key={movie.id} {...movie} showDetails={showDetails}/>
   ))
 
-  const moviesList = movies.results.map(movie => (
+  const moviesList = movies.results.map((movie : MovieProps)=> (
     <Movie key={movie.id} {...movie} showDetails={showDetails}/>
    ))
 

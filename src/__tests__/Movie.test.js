@@ -1,7 +1,7 @@
 import { screen, render} from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import {Movie} from '../components/features/movies/Movie'
+import {Movie} from '../features/movies/Movie'
 
 describe("Movies", () => {
   test("it should display a movie by id", async () => {

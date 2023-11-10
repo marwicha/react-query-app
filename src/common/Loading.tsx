@@ -26,11 +26,15 @@ Loader.defaultProps = {
  'aria-label': 'loading'
 }
 
-const Loading = () => {
+type LoadingProps = {
+  path: string
+}
+
+const Loading = ({path}: LoadingProps): JSX.Element => {
   return (
     <LoaderWrapper>
      <Loader>
-      <LoaderSVG src="src/assets/canal+.svg" alt="Loading..." />
+      <LoaderSVG src={path} alt="Loading..." />
      </Loader>
     </LoaderWrapper>
   );

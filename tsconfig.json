@@ -21,11 +21,11 @@
     "noFallthroughCasesInSwitch": true
   },
   "ts-node": {
-    "moduleTypes": {
-      "jest.config.ts": "cjs"
-    }
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/tests/Movie.test.js"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/__tests__/*.test.js"],
   "exclude": [
     "node_modules"
   ],

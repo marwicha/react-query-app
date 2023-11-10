@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { useParams } from "react-router-dom"
-import { useMovie } from "../../../hooks/useMovies"
+import { useMovie } from "../../hooks/useMovies"
 
 const MovieDetailComponent = () : JSX.Element | null => {
     const {movieId} = useParams()

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Button } from "../../../utils/styled.components";
+import { Button } from "../../utils/styled.components";
 
 export type MovieProps = {
     id: number;
