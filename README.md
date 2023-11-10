@@ -1,20 +1,20 @@
 ## React + TypeScript + Vite + React query + React testing library + styled components
 
 ### Installation : 
-npm install
-npm run dev
-npm run test
+- npm install
+- npm run dev
+- npm run test
 
 ### Architecture : 
 
-folder common
-folder features
-folder tests
-folder utils
+- folder common
+- folder features
+- folder tests
+- folder utils
 
 ### React Query 
 
-- the folder hooks contains the fetch api, i used react query to fetch a list of movies, search movies and get a movie by id 
+- the folder hooks contains the fetch api, i used react query to fetch api calls :
 
 - get all movies : https://api.themoviedb.org/3/discover/tv
 - get a movie by id: https://api.themoviedb.org/3/movie/{movie_id}
