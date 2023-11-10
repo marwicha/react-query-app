@@ -1,11 +1,23 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + React query + React testing library + styled components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Architecture : 
 
-Currently, two official plugins are available:
+folder components (common components)
+folder features
+folder tests
+folder utils
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## React Query 
+
+the folder hooks contains the fetch api, i used react query to fetch a list of movies, search movies and get a movie by id 
+
+get all movies : https://api.themoviedb.org/3/discover/tv
+get a movie by id: https://api.themoviedb.org/3/movie/{movie_id}
+search for a movie https://api.themoviedb.org/3/search/movie
+
+## UI styled components
+
+## For test react testing library
 
 ## Expanding the ESLint configuration
 
