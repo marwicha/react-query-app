@@ -1,11 +1,11 @@
-## React + TypeScript + Vite + React query + React testing library + Vitest + styled components
+## React + TypeScript + Vite + React query + React Testing Library + Vitest + Styled components
 
-### Installation : 
+### Installation :
 - npm install
 - npm run dev
 - npm run test
 
-### Architecture : 
+### Architecture :
 
 - folder common
 - folder features/movies
@@ -13,7 +13,7 @@
 - folder tests
 - folder utils
 
-### React Query 
+### React Query : 
 
 - the folder hooks contains the fetch api, i used react query to fetch api calls :
 
@@ -21,9 +21,7 @@
 - get a movie by id: https://api.themoviedb.org/3/movie/{movie_id}
 - search for a movie https://api.themoviedb.org/3/search/movie
 
-### UI styled components
-
-### react testing library
+### React Testing Library + Vitest :
 
 - to configure testing with vitest add these : 
 

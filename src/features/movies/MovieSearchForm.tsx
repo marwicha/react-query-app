@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Input } from '../../utils/styled.components';
 import { updateQueryUrl } from '../../utils/helpers';
@@ -9,27 +9,35 @@ type MovieSearchForm = {
 
 const MovieSearchFormComponent = ({ onSearch } : MovieSearchForm): JSX.Element => {
 
-  const [, setQuery] = useState<string>('');
+  const [query, setQuery] = useState<string>('');
+  const [isQueried, setIsQueried] = useState(false)
   const [includeAdult, setIncludeAdult] = useState<boolean>(false);
 
   const handleSearchMovies = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const searchValue = event.currentTarget.search?.value ?? '';
+    const includeAdultValue = event.currentTarget.includeAdult?.checked;
+
     const queryParams = new URLSearchParams();
-    queryParams.set('query', event.currentTarget.search?.value);
-    queryParams.set('include_adult', event.currentTarget.includeAdult?.checked);
+    queryParams.set('query', searchValue);
+    queryParams.set('include_adult', includeAdultValue);
 
     updateQueryUrl(queryParams.toString());
-
     setQuery(queryParams.toString());
+    setIsQueried(true)
     onSearch(queryParams.toString());
   };
+
+  useEffect(() => {
+    if (isQueried) updateQueryUrl(query.toString());
+  }, [query, isQueried])
 
   return (
     <form onSubmit={handleSearchMovies}>
       <div>
-        <label>Search by name</label>
-        <Input type="search" id="search" />
+        <label>Movie name: </label>
+        <Input type="search" id="search" data-testid="search-input"/>
         <Button type="submit">Search</Button>
       </div>
       <br />

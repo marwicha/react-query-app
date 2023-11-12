@@ -11,15 +11,17 @@ export type MovieProps = {
 }
 
 const MovieComponent = (props: MovieProps) : JSX.Element => {
-    const {id, title, name, showDetails} = props
-
+    const {id, title, name, overview, showDetails} = props
     return (
-        <>
-            <p>{id}</p>
-            <p>{title ? title: name}</p>
-            <Button onClick={() => showDetails(id)} role="showdetails">Show details</Button>
-            <br></br>
-        </>
+        <li data-testid={`movie-${id}`}>
+            <article>
+                <h4 data-testid="title">title: {title ? title: name}</h4>
+                <p>overview: {overview?.substring(0,50) ?? ""}...</p>
+                <Button onClick={() => showDetails(id)}>
+                    Show details
+                </Button>
+            </article>
+        </li>
     )
 }
 

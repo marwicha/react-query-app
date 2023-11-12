@@ -29,13 +29,4 @@ const Input = styled.input`
   }
 `;
 
-const MovieList = styled.div`
-  background: '#fff',
-  borderRadius: '1em',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  padding: '2em',
-  margin: '1em',
-  flexBasis: 'calc(25% - 2em)'
-`
-
-export {Title, MovieList, Button, Input}
+export {Title, Button, Input}

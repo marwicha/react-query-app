@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Title, MovieList } from '../../utils/styled.components'
+import { Title } from '../../utils/styled.components'
 import Loading from '../../common/Loading'
 import { useMovies, useMoviesSearch } from '../../hooks/useMovies'
 import { useNavigate } from "react-router-dom";
@@ -38,26 +38,26 @@ const MoviesComponent = () : JSX.Element => {
     return <p> Something went wrong...</p>
   }
 
-  const filtredMovieList =  moviesFound.results.map((movie : MovieProps) => (
-    <Movie key={movie.id} {...movie} showDetails={showDetails}/>
-  ))
 
-  const moviesList = movies.results.map((movie : MovieProps)=> (
-    <Movie key={movie.id} {...movie} showDetails={showDetails}/>
-   ))
+  const moviesList = queried ? 
+          moviesFound?.results?.map((movie: MovieProps) => (
+          <Movie key={movie.id}  {...movie} showDetails={showDetails} />))
+          : movies?.results?.map((movie: MovieProps) => (
+          <Movie key={movie.id}  {...movie} showDetails={showDetails} />
+        ));
 
   return (
     <>
       <Title> Technical Test </Title>
       <MovieSearchForm onSearch={handleSearchMovie}/>
 
-      <MovieList>
-      {queried ? (moviesFound?.results.length === 0
-      ? <p>No results were found...</p>
-      : <>{filtredMovieList}</> )
-      : <>{moviesList}</>
-      }
-      </MovieList>
+      <div>
+        { queried && moviesFound?.results.length === 0 && (
+            <p>No results were found...</p>
+        )}
+
+        <ul data-testid="movies-list">{moviesList}</ul>
+      </div>
       </>
   )
 }

@@ -10,10 +10,10 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={  <Movies />}/>
-      <Route path="/movie-details/:movieId" element={<MovieDetail />}/>
-    </Routes>
+      <Routes>
+        <Route path="/" element={  <Movies />}/>
+        <Route path="/movie-details/:movieId" element={<MovieDetail />}/>
+     </Routes>
   </BrowserRouter>
   )
 }
