@@ -1,4 +1,4 @@
-## React + TypeScript + Vite + React query + React testing library + styled components
+## React + TypeScript + Vite + React query + React testing library + Vitest + styled components
 
 ### Installation : 
 - npm install
@@ -8,7 +8,8 @@
 ### Architecture : 
 
 - folder common
-- folder features
+- folder features/movies
+- folder hooks
 - folder tests
 - folder utils
 
@@ -24,56 +25,64 @@
 
 ### react testing library
 
-to configure jest with vite add these : 
+- to configure testing with vitest add these : 
 
-tsconfig.json
+- in package.json install these dependecies: ( latest )
+
 ```
-"include": ["src/**/*.ts", "src/**/*.tsx", "src/__tests__/*.test.js"],
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "jsdom": "latest",
+    "vite": "latest",
+    "vitest": "latest"
 ```
 
-add a file .babelrc 
+- add these folowwing lines in vite.config.js file : 
+```
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+{ ... } 
+test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/setupTests.ts'],
+  },
+
+```
+
+- in tsconfig.json :
+  
+```
+ "types": [
+    ["vitest/globals"]
+  ],
+  "include": ["vite.config.ts", ".eslintrc.cjs", "src"],
+```
+if you're working with typescript add this file : tsconfig.node.json : 
+
+```
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+```
+
+- add a file .babelrc 
 ```
 {
     "presets": ["@babel/preset-env", ["@babel/preset-react", { "runtime": "automatic" }], "@babel/preset-typescript"]
 }
 ```
 
-jest.config.ts
+- add a setupTests.ts file : latest version of vitest you only need to do this import
 ```
-import type { Config } from '@jest/types';
-
-const config: Config.InitialOptions = {
-  moduleFileExtensions: ['ts', 'tsx', 'js'],
-  moduleNameMapper: {
-    '^(.*)\\.js$': '$1',
-  },
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.jsx?$': 'babel-jest',
-  },
-  testEnvironment: 'jsdom',
-  transformIgnorePatterns: [
-    'node_modules/(?!aggregate-error|clean-stack|escape-string-regexp|indent-string|p-map)',
-  ],
-};
-
-export default config;
+import '@testing-library/jest-dom/vitest'
 ```
-#### Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
