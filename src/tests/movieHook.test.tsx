@@ -1,44 +1,54 @@
-
-import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { describe, it } from 'vitest';
+import { render, screen, renderHook, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { apiClient } from '../utils/api-client';
-import Movies from '../features/movies/Movies'
-import Movie from '../features/movies/Movie'
-import MovieSearchForm from '../features/movies/MovieSearchForm';
-import * as useMoviesModule from '../hooks/useMovies';
-import userEvent from '@testing-library/user-event';
+import {Movies} from '../features/movies/Movies'
+import {Movie} from '../features/movies/Movie'
+import {MovieSearchForm} from '../features/movies/MovieSearchForm';
+import { renderWithClient } from './utils';
 
-jest.mock('../hooks/useMovies');
+describe('Movies', () => {
+  it('Renders all movies', async () => {
+   
+    // ARANGE
+    const result = renderWithClient(<Movies />)
 
-jest.mock('../utils/api-client', () => ({
-  apiClient: jest.fn(),
-}));
+    // EXPECT
+    expect(await result.findByText(/Elas por Elas/i)).toBeInTheDocument()
+  })
 
+})
 /*
 describe('useMovies', () => {
     it('get all movies ', async () => {
-        
-        useMoviesModule.useMovies.mockReturnValue({
-            movies: {
-              results: [
-                { id: 219109, title: 'Elas por Elas'},
-                { id: 72879, title: 'Tomorrow is Ours'},
-              ],
-            },
-            isLoading: false,
-            isError: false,
-          });
 
-       render(<Movies />);
+      const searchResults = useMoviesModule.useMoviesSearch('loki');
+    
+      const mockMovies = {
+          results: [
+            { id: 219109, title: 'Elas por Elas' },
+            { id: 72879, title: 'Tomorrow is Ours' },
+          ],
+      };
+
+      useMoviesModule.useMovies.mockReturnValue({
+          movies: mockMovies,
+          isLoading: false,
+          isError: false,
+      })
+        
+       let result;
+       await act(async () => {
+         result = render(<Movies/>);
+       });
   
+       expect(result.container).toMatchSnapshot();
        expect(screen.getByText('Elas por Elas')).toBeInTheDocument();
        expect(screen.getByText('Tomorrow is Ours')).toBeInTheDocument();
 
     });
 });
 
-
+/*
 describe('useMoviesSearch', () => {
     it('get movies by search query', async () => {
       
@@ -61,7 +71,8 @@ describe('useMoviesSearch', () => {
    
     });
 });
-
+*/
+/*
 describe('useMovie', () => {
     it('get a movie by id', async () => {
       const movieId = 1178202;

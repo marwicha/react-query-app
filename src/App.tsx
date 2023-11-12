@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Movies from './features/movies/Movies'
+import { Movies } from './features/movies/Movies'
 import { MovieDetail } from "./features/movies/MovieDetail";
 
 const App = () => {

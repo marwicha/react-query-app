@@ -4,7 +4,7 @@ import {
 
 import {apiClient} from '../utils/api-client'
 
-const API_URL = process.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL
 
 /**
  * @returns get all movies
@@ -12,7 +12,7 @@ const API_URL = process.env.VITE_API_URL
 const useMovies = () => {
     const {data: movies, isLoading, isError} = useQuery({
         queryKey: ['movies'],
-        queryFn: () => apiClient(`${API_URL}/discover/tv`)
+        queryFn: () => apiClient(`${API_URL}/discover/tv`),
     })
 
     return {movies, isLoading, isError}
@@ -26,7 +26,7 @@ const useMoviesSearch = (queryParams: string) => {
     //const ParamsExemple = https://api.themoviedb.org/3/search/movie?query=Pirates&include_adult=false&language=en-US&page=1
     const {data: moviesFound, isLoading: isLoadingSearch} = useQuery({
         queryKey: ['moviesSearch', {queryParams}],
-        queryFn: () => apiClient(`${API_URL}/search/movie?${queryParams}&language=en-US&page=1`),
+        queryFn: () => apiClient(`${API_URL}/search/movie?${queryParams}&language=en-US&page=1`)
     })
     return {moviesFound, isLoadingSearch}
 }

@@ -20,12 +20,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "ts-node": {
-    "types": [
-      "node"
-    ]
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/__tests__/*.test.js"],
+  "types": [
+    ["vitest/globals"]
+  ],
+  "include": ["vite.config.ts", ".eslintrc.cjs", "src"],
   "exclude": [
     "node_modules"
   ],

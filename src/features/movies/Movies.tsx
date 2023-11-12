@@ -4,9 +4,9 @@ import Loading from '../../common/Loading'
 import { useMovies, useMoviesSearch } from '../../hooks/useMovies'
 import { useNavigate } from "react-router-dom";
 import { Movie, MovieProps } from './Movie';
-import MovieSearchForm from './MovieSearchForm';
+import { MovieSearchForm } from './MovieSearchForm';
 
-const Movies = () : JSX.Element => {
+const MoviesComponent = () : JSX.Element => {
 
   /*
   const [query, setQuery] = useQueryParam(
@@ -62,5 +62,5 @@ const Movies = () : JSX.Element => {
   )
 }
 
-export default Movies
+export const Movies = MoviesComponent
 

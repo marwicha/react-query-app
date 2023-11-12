@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { Button, Input } from '../../utils/styled.components';
 import { updateQueryUrl } from '../../utils/helpers';
@@ -5,7 +6,8 @@ import { updateQueryUrl } from '../../utils/helpers';
 type MovieSearchForm = {
   onSearch: (queryParams: string) => void
 }
-const MovieSearchForm = ({ onSearch } : MovieSearchForm): JSX.Element => {
+
+const MovieSearchFormComponent = ({ onSearch } : MovieSearchForm): JSX.Element => {
 
   const [, setQuery] = useState<string>('');
   const [includeAdult, setIncludeAdult] = useState<boolean>(false);
@@ -44,4 +46,4 @@ const MovieSearchForm = ({ onSearch } : MovieSearchForm): JSX.Element => {
   );
 };
 
-export default MovieSearchForm;
+export const MovieSearchForm =  MovieSearchFormComponent

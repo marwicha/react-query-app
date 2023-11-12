@@ -6,7 +6,7 @@ export type MovieProps = {
     title: string;
     name?: string;
     overview?: string;
-    vote_average: string;
+    vote_average?: string;
     showDetails: (id: number) => void;
 }
 
@@ -17,7 +17,7 @@ const MovieComponent = (props: MovieProps) : JSX.Element => {
         <>
             <p>{id}</p>
             <p>{title ? title: name}</p>
-            <Button onClick={() => showDetails(id)}>Show details</Button>
+            <Button onClick={() => showDetails(id)} role="showdetails">Show details</Button>
             <br></br>
         </>
     )

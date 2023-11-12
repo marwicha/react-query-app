@@ -1,18 +1,15 @@
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react";
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
 
-export default defineConfig(({ mode }) => {
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-  let env = loadEnv(mode, process.cwd(), "VITE_APP");
-
-  env.NODE_ENV = mode;
-
-  const envWithProcessPrefix = {
-    "process.env": `${JSON.stringify(env)}`,
-  };
-
-  return {
-    plugins: [react()],
-    define: envWithProcessPrefix,
-  };
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/setupTests.ts'],
+  },
 });
