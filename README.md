@@ -1,6 +1,7 @@
 ## React + TypeScript + Vite + React query + React Testing Library + Vitest + Styled components
 
 ### Installation :
+
 - npm install
 - npm run dev
 - npm run test
@@ -13,7 +14,7 @@
 - folder tests
 - folder utils
 
-### React Query : 
+### React Query :
 
 - the folder hooks contains the fetch api, i used react query to fetch api calls :
 
@@ -23,7 +24,7 @@
 
 ### React Testing Library + Vitest :
 
-- to configure testing with vitest add these : 
+- to configure testing with vitest add these :
 
 - in package.json install these dependecies: ( latest )
 
@@ -36,11 +37,12 @@
     "vitest": "latest"
 ```
 
-- add these folowwing lines in vite.config.js file : 
+- add these folowwing lines in vite.config.js file :
+
 ```
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-{ ... } 
+{ ... }
 test: {
     globals: true,
     environment: 'jsdom',
@@ -50,14 +52,15 @@ test: {
 ```
 
 - in tsconfig.json :
-  
+
 ```
  "types": [
     ["vitest/globals"]
   ],
   "include": ["vite.config.ts", ".eslintrc.cjs", "src"],
 ```
-if you're working with typescript add this file : tsconfig.node.json : 
+
+if you're working with typescript add this file : tsconfig.node.json :
 
 ```
 {
@@ -73,7 +76,8 @@ if you're working with typescript add this file : tsconfig.node.json :
 
 ```
 
-- add a file .babelrc 
+- add a file .babelrc
+
 ```
 {
     "presets": ["@babel/preset-env", ["@babel/preset-react", { "runtime": "automatic" }], "@babel/preset-typescript"]
@@ -81,6 +85,7 @@ if you're working with typescript add this file : tsconfig.node.json :
 ```
 
 - add a setupTests.ts file : latest version of vitest you only need to do this import
+
 ```
 import '@testing-library/jest-dom/vitest'
 ```

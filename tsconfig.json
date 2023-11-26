@@ -20,12 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "types": [
-    ["vitest/globals"]
-  ],
+  "types": [["vitest/globals"]],
   "include": ["vite.config.ts", ".eslintrc.cjs", "src"],
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
